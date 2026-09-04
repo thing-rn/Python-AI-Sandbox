@@ -1,16 +1,33 @@
 {
-  
-  "name": "Python Dev",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
-  "features": {},
-  "postCreateCommand": "pip install --upgrade pip",
+  "name": "Py-AI-Sandbox",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
+  "runArgs": [
+    "--add-host=host.docker.internal:host-gateway"
+  ],
+  "containerEnv": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONUNBUFFERED": "1",
+    "OLLAMA_BASE_URL": "http://host.docker.internal:11434/v1",
+    "OLLAMA_MODEL": "llama3.2"
+  },
+  "forwardPorts": [11434],
+  "postCreateCommand": "python -m pip install --upgrade pip && python -m pip install -r .devcontainer/requirements.txt",
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance"
-      ]
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.analysis.autoImportCompletions": true,
+        "python.analysis.typeCheckingMode": "basic",
+        "files.exclude": {
+          "**/__pycache__": true,
+          "**/*.pyc": true
+        }
+      }
     }
-  }  
+  }
 }
 
