@@ -1,0 +1,2 @@
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC+PZLjygu3SIT6F2UBCfEmfF7DxeV2v/jgtDxnnQM+Ysource /workspaces/pythonSBox/.venv/bin/activate
+python proj_02/ai_automation_ollama.py
